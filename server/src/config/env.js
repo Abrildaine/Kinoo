@@ -4,6 +4,7 @@ import { z } from 'zod'; //Zod sirve para validar datos, definis como tienen que
 const Schema = z.object({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'), //en que modo corre la app y que el valor solo puede ser uno de esos tres textos
     PORT: z.coerce.number().int().min(1).max(65535).default(3000),
+      DB_FILE: z.string().default('kinoo.db'),
 }); //variable que no se puede reasignar, espera un objeto con esas propiedades
 
 const parsed = Schema.safeParse(process.env); //en lugar de explotar con un error, devuelve un objeto que dice si salio bien o mal
