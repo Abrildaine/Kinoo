@@ -7,7 +7,7 @@ const carpeta = dirname(fileURLToPath(import.meta.url));
 
 export function abrirDb(archivo) {
     const db = new Database(archivo);
-    db,pragma('journal_mode = WAL');
+    db.pragma('journal_mode = WAL');
     db.pragma('foreign_keys = ON');
     db.exec(readFileSync(join(carpeta, 'schema.sql'), 'utf-8'));
     return db;

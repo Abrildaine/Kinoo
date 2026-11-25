@@ -1,6 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import { app } from '../src/app.js';
+import { crearApp } from '../src/app.js';
+import { abrirDb } from '../src/db/index.js';
+
+const app = crearApp(abrirDb(':memory:'));
 
 describe('API base', () => {
   it('GET /health responde ok', async () => {
